@@ -21,5 +21,5 @@ export const ALLOWED_PATHS = [
     "/corporateCard/management",
     "/employees",
     "/expenseManagement/financialReports",
-    "/expenseManagement/customizations",
-  ];
+    "/expenseManagement/customizations"
+];
