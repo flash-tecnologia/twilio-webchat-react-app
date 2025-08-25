@@ -3,7 +3,7 @@ import { GenericThemeShape } from "@twilio-paste/theme";
 
 import { FileAttachmentConfig, TranscriptConfig } from "../definitions";
 
-type AlertVariants = "error" | "neutral" | "warning"
+type AlertVariants = "error" | "neutral" | "warning";
 
 export enum EngagementPhase {
     PreEngagementForm = "PreEngagementForm",
