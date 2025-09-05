@@ -20,13 +20,13 @@ export const MessageListSeparator = ({
     const getSeparatorText = () => {
         let separatorText;
         if (separatorType === "new") {
-            separatorText = "New";
+            separatorText = "Novo";
         } else {
             const daysOld = getDaysOld(message.dateCreated);
             if (daysOld === 0) {
-                separatorText = "Today";
+                separatorText = "Hoje";
             } else if (daysOld === 1) {
-                separatorText = "Yesterday";
+                separatorText = "Ontem";
             } else {
                 separatorText = message.dateCreated.toLocaleDateString();
             }

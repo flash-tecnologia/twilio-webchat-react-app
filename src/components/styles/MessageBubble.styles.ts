@@ -62,3 +62,21 @@ export const readStatusStyles: TextStyleProps = {
     marginRight: "space20",
     color: "colorText"
 };
+
+export const boxButtonOptionsStyles: BoxStyleProps = {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "space30",
+    marginTop: "space50",
+};
+
+export const buttonOptionsStyles: BoxStyleProps = {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "space30",
+};
+
+export const descriptionOptionsStyles: TextStyleProps = {
+    fontSize: "fontSize10",
+    color: "colorTextDecorative10"
+};

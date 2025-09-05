@@ -15,7 +15,3 @@ export const titleStyles: TextStyleProps = {
 export const introStyles: TextStyleProps = {
     marginBottom: "space70"
 };
-
-export const fieldStyles: BoxStyleProps = {
-    marginBottom: "space70"
-};

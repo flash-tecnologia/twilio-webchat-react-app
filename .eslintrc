@@ -33,10 +33,11 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-shadow": ["error"],
-    "@typescript-eslint/no-unused-vars": "error",
     "import/no-duplicates": ["error"],
     "@typescript-eslint/no-empty-function": "off",
     "spaced-comment": "warn",
-    "prefer-named-capture-group": "off"
+    "prefer-named-capture-group": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   }
 }

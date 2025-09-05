@@ -16,9 +16,11 @@ export const containerStyles: BoxStyleProps = {
     outline: "0px",
     padding: "space0",
     _hover: {
-        backgroundColor: "colorBackgroundPrimaryStronger"
+        backgroundColor: "colorBackgroundPrimaryStronger",
+        borderRadius: "borderRadiusCircle"
     },
     _focusVisible: {
+        borderRadius: "borderRadiusCircle",
         backgroundColor: "colorBackgroundPrimaryStronger",
         boxShadow: "shadowFocus"
     }

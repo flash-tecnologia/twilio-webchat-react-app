@@ -28,6 +28,25 @@ export const getContainerStyles = (isBubble: boolean, disabled?: boolean): BoxSt
     _focusVisible: disabled ? {} : { boxShadow: "shadowFocus", borderColor: "transparent", outline: "none" }
 });
 
+export const downloadButtonStyles = (isBubble: boolean, disabled?: boolean): BoxStyleProps => ({
+    paddingTop: "space30",
+    paddingBottom: "space30",
+    width: "10%",
+    margin: "auto",
+    paddingLeft: "space30",
+    paddingRight: isBubble ? "space30" : "space120",
+    marginTop: "space30",
+    marginBottom: "space30",
+    borderColor: "colorBorderWeak",
+    borderWidth: "borderWidth10",
+    borderStyle: "solid",
+    borderRadius: "borderRadius20",
+    background: "inherit",
+    color: "inherit",
+    _hover: disabled ? {} : { cursor: "pointer", borderColor: "inherit" },
+    _focusVisible: disabled ? {} : { boxShadow: "shadowFocus", borderColor: "transparent", outline: "none" }
+});
+
 export const fileIconContainerStyles: BoxStyleProps = {
     paddingLeft: "space20",
     paddingRight: "space50"

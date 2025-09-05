@@ -165,7 +165,7 @@ export const MessageList = () => {
             <>
                 <Box {...conversationEventContainerStyles}>
                     <Text as="h3" {...conversationEventTitleStyles} data-test="chat-started">
-                        Chat started
+                        Conversa iniciada
                     </Text>
                     <Text as="p" {...conversationEventDateStyles}>
                         {conversation?.dateCreated.toLocaleString()}
@@ -244,7 +244,7 @@ export const MessageList = () => {
                         ?.filter((p) => p.isTyping && p.identity !== conversationsClient?.user.identity)
                         .map((p) => (
                             <Text {...participantTypingStyles} as="p" key={p.identity}>
-                                {users?.find((u) => u.identity === p.identity)?.friendlyName} is typing...
+                                {users?.find((u) => u.identity === p.identity)?.friendlyName.split(' ')[0]} está escrevendo...
                             </Text>
                         ))}
                 </Box>

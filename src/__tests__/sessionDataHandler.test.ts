@@ -18,7 +18,7 @@ describe("session data handler", () => {
                 throw Error("Backend failed to process the request");
             });
 
-            await expect(sessionDataHandler.fetchAndStoreNewSession({ formData: {} })).rejects.toThrowError();
+            await expect(sessionDataHandler.fetchAndStoreNewSession()).rejects.toThrowError();
         });
 
         it("should store new token data in local storage", async () => {
@@ -30,7 +30,7 @@ describe("session data handler", () => {
                 conversationSid: "sid"
             };
             fetchMock.once(() => true, tokenPayload);
-            await sessionDataHandler.fetchAndStoreNewSession({ formData: {} });
+            await sessionDataHandler.fetchAndStoreNewSession();
 
             expect(setLocalStorageItemSpy).toHaveBeenCalledWith("TWILIO_WEBCHAT_WIDGET", JSON.stringify(tokenPayload));
         });
@@ -42,7 +42,7 @@ describe("session data handler", () => {
                 conversationSid: "sid"
             };
             fetchMock.once(() => true, tokenPayload);
-            const { token } = await sessionDataHandler.fetchAndStoreNewSession({ formData: {} });
+            const { token } = await sessionDataHandler.fetchAndStoreNewSession();
 
             expect(token).toBe(tokenPayload.token);
         });
