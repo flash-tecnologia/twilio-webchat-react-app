@@ -194,13 +194,9 @@ export const MessageBubble = ({
                             )}`}
                         </Text>
                     </Flex>
-                    <Text
-                        as="p"
-                        dangerouslySetInnerHTML={{
-                            __html: message.body ? parseMessageBody(`${message.body}`, belongsToCurrentUser) : ""
-                        }}
-                        {...bodyStyles}
-                    />
+                    <Text as="p" {...bodyStyles}>
+                        {message.body ? parseMessageBody(`${message.body}`, belongsToCurrentUser) : ""}
+                    </Text>
                     {options.length ? (
                         <Box {...boxButtonOptionsStyles}>
                             {options.map((option) => {
@@ -227,6 +223,16 @@ export const MessageBubble = ({
                                         />
                                     );
                                 } else if (option.type === "call-to-action") {
+                                    const handleCallToAction = () => {
+                                        try {
+                                            const url = new URL(option.description);
+                                            if (['http:', 'https:'].includes(url.protocol)) {
+                                                window.open(option.description, "_blank", "noopener,noreferrer");
+                                            }
+                                        } catch {
+                                        }
+                                    };
+                                    
                                     return (
                                         <Button
                                             {...buttonOptionsStyles}
@@ -236,7 +242,7 @@ export const MessageBubble = ({
                                             variant="secondary"
                                             size="icon_small"
                                             type="button"
-                                            onClick={() => window.open(option.description, "_blank")}
+                                            onClick={handleCallToAction}
                                         >
                                             <Box>
                                                 <Text as="p">{option.label}</Text>
