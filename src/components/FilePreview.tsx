@@ -107,7 +107,7 @@ export const FilePreview = (props: FilePreviewProps) => {
 
     return (
         <Box {...outerContainerStyles}>
-            {(media?.contentType || file.type).includes("image") ? (
+            {media?.contentType.includes("image") ? (
                 <>
                     <img src={mediaUrl} alt="MMS" width="150px" onClick={() => setMediaModalOpened(true)} />
                     <Modal
