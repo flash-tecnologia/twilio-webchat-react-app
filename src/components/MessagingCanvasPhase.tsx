@@ -23,7 +23,7 @@ export const MessagingCanvasPhase = () => {
 
     return (
         <Wrapper>
-            <Header />
+            <Header customTitle="Fale conosco!"/>
             <NotificationBar />
             <MessageList />
             {conversationState === "active" ? <MessageInput /> : <ConversationEnded />}

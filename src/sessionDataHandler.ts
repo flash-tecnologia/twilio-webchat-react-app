@@ -101,21 +101,57 @@ export const sessionDataHandler = {
         return updatedSessionData;
     },
 
-    fetchAndStoreNewSession: async ({ formData }: { formData: Record<string, unknown> }) => {
+    fetchAndStoreNewSession: async () => {
         log.debug("sessionDataHandler: trying to create new session");
+
+        // Get employeeId from URL params, data attributes, localStorage, or global variables
+        const urlParams = new URLSearchParams(window.location.search);
+        const employeeId = urlParams.get('employeeId') || 
+                          document.body.getAttribute('data-employee-id') || 
+                          localStorage.getItem('employeeId') ||
+                          'unknown';
+
+        const utmParams = Array.from(new URLSearchParams(window.location.search).entries())
+            .filter((p) => p[0].toLowerCase().startsWith("utm"))
+            .reduce<{ [id: string]: string }>((acc, currVal) => {
+                acc[currVal[0].toLowerCase()] = currVal[1];
+                return acc;
+            }, {});
+
+        const allParams = Array.from(new URLSearchParams(window.location.search).entries()).reduce<{
+            [id: string]: string;
+        }>((acc, currVal) => {
+            acc[currVal[0].toLowerCase()] = currVal[1];
+            return acc;
+        }, {});
+
+        // Add employeeId to allParams
+        allParams.employeeid = employeeId;
 
         let newTokenData;
 
         try {
-            newTokenData = await contactBackend<Token>("/initWebchat", { formData });
+            newTokenData = await contactBackend<Token>("/initWebchat", {
+                utmParams,
+                allParams,
+                formData: {
+                    employeeId
+                }
+            });
         } catch (e) {
             throw Error("No results from server");
         }
 
-        log.debug("sessionDataHandler: new session successfully created");
-        storeSessionData(newTokenData);
+        // Store employeeId with session data for resumed sessions
+        const sessionDataWithEmployeeId = {
+            ...newTokenData,
+            employeeId
+        };
 
-        return newTokenData;
+        log.debug("sessionDataHandler: new session successfully created");
+        storeSessionData(sessionDataWithEmployeeId);
+
+        return sessionDataWithEmployeeId;
     },
 
     clear: () => {

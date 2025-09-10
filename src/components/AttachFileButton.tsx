@@ -42,7 +42,7 @@ export const AttachFileButton = ({ textAreaRef }: { textAreaRef?: React.RefObjec
                 ref={fileInputRef}
                 multiple
             />
-            <AttachIcon decorative={false} title="Add file attachment" />
+            <AttachIcon decorative={false} title="Anexar arquivo" />
         </Button>
     );
 };
